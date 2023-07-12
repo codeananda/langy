@@ -12,7 +12,7 @@ st.set_page_config(page_title=title, page_icon=":mortar_board:")
 st.title(":mortar_board: " + title)
 
 # Intro
-intro = "*Input text in a foreign language, get corrections and explanations out.*"
+intro = "*Automatically grade, correct, and explain any text in a foreign language.*"
 st.markdown(intro)
 
 # Set a default model
