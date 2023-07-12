@@ -1,0 +1,6 @@
+pip
+openai
+streamlit
+redlines
+langchain
+pydantic
