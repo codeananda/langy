@@ -41,29 +41,4 @@ for message in st.session_state.messages:
 
 # Accept user input
 if prompt := st.chat_input("Enter some text to get corrections"):
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        message_placeholder = st.empty()
-        text_class = classify_text_level(prompt, message_placeholder)
-        text_correct = correct_text(
-            prompt, message_placeholder, message_contents=text_class + "\n\n"
-        )
-        text_correct = parse_corrections(text_correct)
-        comparison = Redlines(prompt, text_correct.corrected_text)
-        comparison = comparison.output_markdown
-
-        final_response = f"{text_class}\n\n"
-        final_response += "## Corrected Text\n\n"
-        final_response += f"{comparison}\n\n"
-        final_response += "## Reasons\n\n"
-        for reason in text_correct.reasons:
-            final_response += f"1. {reason}\n"
-
-        message_placeholder.empty()
-        message_placeholder.markdown(final_response, unsafe_allow_html=True)
-        st.session_state.messages.append({"role": "assistant", "content": final_response})
+    main(prompt)

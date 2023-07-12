@@ -14,6 +14,7 @@ from langchain.prompts import (
 )
 from langchain.schema import LLMResult
 from pydantic import BaseModel, Field
+from redlines import Redlines
 
 MODEL_TOKEN_LIMIT = 4000
 
@@ -139,6 +140,13 @@ def correct_text(prompt, message_placeholder, message_contents="") -> str:
 
     The AI does not give answers like "changed X to Y because this is how it is done in German".
     Instead, it explains the reason for the change, e.g. "changed X to Y because Z".
+    
+    The AI only gives one explanation for each change. It does not repeat the same explanation
+    multiple times.
+    
+    The AI counts all changes such as "changed X to Y" as one change. If there are multiple reasons
+    for the change, they are listed in the same bullet point. For example, "changed X to Y because
+    Z and W".    
 
     If the AI does not know the answer to a question, it truthfully says it does not know.
 
@@ -249,3 +257,35 @@ def parse_corrections(correction_and_reasons):
     output = chain({"text": correction_and_reasons})
     results = parser.parse(output["output"])
     return results
+
+def main(prompt):
+    """Classify, correct and explain the text."""
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message in chat message container
+    with st.chat_message("user"):
+        st.markdown(prompt)
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        message_placeholder = st.empty()
+        # Classify
+        text_class = classify_text_level(prompt, message_placeholder)
+        # Correct + parse
+        text_correct = correct_text(
+            prompt, message_placeholder, message_contents=text_class + "\n\n"
+        )
+        text_correct = parse_corrections(text_correct)
+        # Compare with input and create nice redline formatting of changes
+        comparison = Redlines(prompt, text_correct.corrected_text)
+        comparison = comparison.output_markdown
+
+        # Combine all results into one string and display
+        final_response = f"{text_class}\n\n"
+        final_response += "## Corrected Text\n\n"
+        final_response += f"{comparison}\n\n"
+        final_response += "## Reasons\n\n"
+        for reason in text_correct.reasons:
+            final_response += f"1. {reason}\n"
+
+        message_placeholder.markdown(final_response, unsafe_allow_html=True)
+        st.session_state.messages.append({"role": "assistant", "content": final_response})
