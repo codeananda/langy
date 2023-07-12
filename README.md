@@ -1,2 +1,2 @@
-# langy
-🎓 Langy - The Interactive AI Language Tutor
+# 🎓 Langy - The Interactive AI Language Tutor
+
