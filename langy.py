@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 from redlines import Redlines
 
-from helpers import (
+from utils import (
     classify_text_level,
     correct_text,
     parse_corrections,
