@@ -55,30 +55,8 @@ def classify_text_level(prompt, message_placeholder) -> str:
         callbacks=[StreamingStreamlitCallbackHandler(message_placeholder)],
     )
 
-    template_reason_level = """Classify the text based on the Common European Framework of Reference
-    for Languages (CEFR), provide maxiumum 200 words for your answer.
-
-    Text: {text}
-
-    {format_instructions}
-     """
-
-    class ReasonLevel(BaseModel):
-        reason: str = Field(description="Detailed reasons for the classification")
-        level: str = Field(description="The CEFR level of the text, e.g. A1, B2, etc.")
-
-    parser_reason_level = PydanticOutputParser(pydantic_object=ReasonLevel)
-
-    prompt_template_reason_level = ChatPromptTemplate(
-        messages=[HumanMessagePromptTemplate.from_template(template_reason_level)],
-        input_variables=["text"],
-        partial_variables={
-            "format_instructions": parser_reason_level.get_format_instructions()
-        },
-    )
-
     shorter_template = """Classify the text based on the Common European Framework of Reference
-    for Languages (CEFR), provide detailed reasons for your answer.
+    for Languages (CEFR), provide maxiumum 50 words for your answer.
 
     Text: {text}
 
