@@ -4,3 +4,4 @@ streamlit
 redlines
 langchain
 pydantic
+tiktoken
