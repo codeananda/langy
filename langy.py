@@ -24,7 +24,7 @@ openai.organization = st.secrets["OPENAI_ORG_ID"]
 MODEL_TOKEN_LIMIT = 4000
 
 # Setting page title and header
-title = "Langy - The Interactive AI Language Tutor"
+title = "Langy - The AI Language Tutor"
 st.set_page_config(page_title=title, page_icon=":mortar_board:")
 st.title(":mortar_board: " + title)
 
@@ -264,9 +264,7 @@ def parse_corrections(correction_and_reasons):
 
 
 # Intro
-intro = """👋 Hi! I'm Langy, an AI bot to help you improve your foreign language writing skills. ✍️
-
-Enter some text, then I'll correct it, and explain my reasoning. 
+intro = """*Input text in a foreign language, get corrections + explanations out.*
 """
 st.markdown(intro)
 
