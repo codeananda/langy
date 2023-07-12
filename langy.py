@@ -11,15 +11,10 @@ from utils import (
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 openai.organization = st.secrets["OPENAI_ORG_ID"]
 
-MODEL_TOKEN_LIMIT = 4000
-
 # Setting page title and header
 title = "Langy - The AI Language Tutor"
 st.set_page_config(page_title=title, page_icon=":mortar_board:")
 st.title(":mortar_board: " + title)
-
-
-
 
 # Intro
 intro = """*Input text in a foreign language, get corrections + explanations out.*

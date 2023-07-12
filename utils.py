@@ -15,6 +15,7 @@ from langchain.prompts import (
 from langchain.schema import LLMResult
 from pydantic import BaseModel, Field
 
+MODEL_TOKEN_LIMIT = 4000
 
 class StreamingStreamlitCallbackHandler(BaseCallbackHandler):
     """Callback handler for streaming. Only works with LLMs that support streaming."""
