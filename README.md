@@ -9,7 +9,7 @@ Free access here: https://langy-tutor.streamlit.app/
 ## 💻 Tech Stack
 
 - Python
-- Langchain
+- LangChain
 - OpenAI
 - Streamlit
 - Pydantic
