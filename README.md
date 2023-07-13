@@ -1,4 +1,4 @@
-# 🎓 Langy - The Interactive AI Language Tutor
+# 🎓 Langy - The AI Language Tutor
 
 *Automatically grade, correct, and explain any text in a foreign language.*
 
