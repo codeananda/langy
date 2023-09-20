@@ -6,7 +6,7 @@ Free access here: https://langy-tutor.streamlit.app/
 
 [comment]: <> (<img src="https://github.com/codeananda/langy/assets/51246969/5f9cfe4e-dbcd-4b85-a071-5b34f8b57730" alt="demo" style="width: 600px; height: auto;">)
 
-## Langy in 90s
+## ⏱️ Langy in 90s
 
 
 https://github.com/codeananda/langy/assets/51246969/6d4ae0e6-2675-4f32-9711-1e34876fe1fd
