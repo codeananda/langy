@@ -27,7 +27,7 @@ https://github.com/codeananda/langy/assets/51246969/6d4ae0e6-2675-4f32-9711-1e34
 - Updated streamlit code to use the streamlit native UI instead of streamlit-chat (much easier to use and more beautiful)
 - Moved to its own repo and separated everything into functions/classes
 
-## 🤔 Potential Future Changes
+## 💪 Improvements
 
 It's *far* from a finished product, there are *loads* of ways it could be improved
 
