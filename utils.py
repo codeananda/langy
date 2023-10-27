@@ -66,6 +66,7 @@ def classify_text_level(prompt, message_placeholder) -> str:
 
     ```markdown
     ## CEFR Level: <level>
+    
     <reason>
     ```
      """
