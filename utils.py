@@ -62,13 +62,11 @@ def classify_text_level(prompt, message_placeholder) -> str:
 
     Text: {text}
 
-    Format the output as markdown like this
+    Format the output as markdown like this:
 
-    ```markdown
     ## CEFR Level: <level>
     
     <reason>
-    ```
      """
     prompt_template_reason_level = ChatPromptTemplate(
         messages=[HumanMessagePromptTemplate.from_template(shorter_template)],
