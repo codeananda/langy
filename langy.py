@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 
-from utils import main
+from utils import main, MODEL_NAME
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 openai.organization = st.secrets["OPENAI_ORG_ID"]
@@ -17,7 +17,7 @@ st.markdown(intro)
 
 # Set a default model
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    st.session_state["openai_model"] = MODEL_NAME
 
 
 # Initialize chat history
