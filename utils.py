@@ -17,6 +17,7 @@ from pydantic import BaseModel, Field
 from redlines import Redlines
 
 MODEL_TOKEN_LIMIT = 4000
+MODEL_NAME = 'gpt-4'
 
 class StreamingStreamlitCallbackHandler(BaseCallbackHandler):
     """Callback handler for streaming. Only works with LLMs that support streaming."""
@@ -50,6 +51,7 @@ def classify_text_level(prompt, message_placeholder) -> str:
     """Classify the prompt based on the Common European Framework of Reference. Prompt
     is assumed to be text in a foreign language that the user wants help with."""
     llm = ChatOpenAI(
+        model_name=MODEL_NAME,
         temperature=0,
         streaming=True,
         callbacks=[StreamingStreamlitCallbackHandler(message_placeholder)],
@@ -92,6 +94,7 @@ def classify_text_level(prompt, message_placeholder) -> str:
 
 def correct_text(prompt, message_placeholder, message_contents="") -> str:
     llm = ChatOpenAI(
+        model_name=MODEL_NAME,
         temperature=0,
         streaming=True,
         callbacks=[
@@ -208,6 +211,7 @@ def correct_text(prompt, message_placeholder, message_contents="") -> str:
 def parse_corrections(correction_and_reasons):
     """Extract the corrections/reasons from input and store in Pydantic object."""
     llm = ChatOpenAI(
+        model_name=MODEL_NAME,
         temperature=0,
     )
 
