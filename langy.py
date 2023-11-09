@@ -3,7 +3,7 @@ from openai import OpenAI
 
 from utils import main, MODEL_NAME
 
-OpenAI(api_key=st.secrets["OPENAI_API_KEY"], organization=st.secrets["OPENAI_ORG_ID"])
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"], organization=st.secrets["OPENAI_ORG_ID"])
 
 # Setting page title and header
 title = "Langy - The AI Language Tutor"
