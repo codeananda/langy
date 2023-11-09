@@ -3,8 +3,8 @@ import streamlit as st
 
 from utils import main, MODEL_NAME
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
-openai.organization = st.secrets["OPENAI_ORG_ID"]
+raise Exception("The 'openai.api_key' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(api_key=st.secrets["OPENAI_API_KEY"])'")
+raise Exception("The 'openai.organization' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(organization=st.secrets["OPENAI_ORG_ID"])'")
 
 # Setting page title and header
 title = "Langy - The AI Language Tutor"
