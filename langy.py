@@ -1,10 +1,9 @@
-import openai
 import streamlit as st
+from openai import OpenAI
 
 from utils import main, MODEL_NAME
 
-raise Exception("The 'openai.api_key' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(api_key=st.secrets["OPENAI_API_KEY"])'")
-raise Exception("The 'openai.organization' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(organization=st.secrets["OPENAI_ORG_ID"])'")
+OpenAI(api_key=st.secrets["OPENAI_API_KEY"], organization=st.secrets["OPENAI_ORG_ID"])
 
 # Setting page title and header
 title = "Langy - The AI Language Tutor"
@@ -27,7 +26,7 @@ if "messages" not in st.session_state:
 columns = st.columns([1, 1, 1, 1])
 with columns[0]:
     # Give the user an example
-    example_button = st.button('Give Me An Example', key="example")
+    example_button = st.button("Give Me An Example", key="example")
 
 with columns[1]:
     # Let user clear the current conversation
@@ -42,7 +41,7 @@ for message in st.session_state.messages:
 
 # Run simple example if button is clicked
 if example_button:
-    main('Hallo, ich heisse Langy. Ich habe 25 Jahren alt.')
+    main("Hallo, ich heisse Langy. Ich habe 25 Jahren alt.")
 
 # Accept user input
 if prompt := st.chat_input("Enter some text to get corrections"):
